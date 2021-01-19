@@ -1,0 +1,31 @@
+1 - select count(ID) AS cities FROM city where countrycode='USA';       ||  (274)
+
+2 - select population, LifeExpectancy as pop FROM country WHERE name='Argentina'                ||   37m + 75.1
+
+3 - select name from country where lifeexpectancy is not null order by lifeexpectancy desc limit 1;   || andorra
+
+
+4 - SELECT city.`name` from city
+	left join country
+		on country.capital = city.id
+where city.id = '653';
+
+5 - Select l.`language` from countrylanguage l
+	left join country c
+	on c.`code`= l.countrycode
+    where c.region= 'southeast asia';
+
+6 - SELECT `name` FROM city WHERE `name` LIKE 'f%';
+
+
+7 - select count(city.`name`) as cities from city city
+    left join country ctr
+        on ctr.`code`= city.countrycode
+    where city.countrycode= 'CHN';
+
+8. select name, population from country where population != 0 AND population is not null order by LifeExpectancy asc limit 1;
+
+
+9 - select count(`name`) as countrys from country;
+
+10 - select `name` from country order by SurfaceArea desc limit 10;
