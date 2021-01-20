@@ -1,0 +1,96 @@
+select first_name, last_name from actor;
+
+select first_name, last_name from actor where first_name='john';
+
+
+select first_name, last_name from actor where last_name='neeson';
+
+
+select first_name, last_name from actor 
+	where (actor_id % 10)=0;
+
+
+
+select description from film where film_id=100;
+
+
+
+
+select * from film where rating='r';
+
+
+
+select * from film where rating !='r';
+
+
+select * from film order by length asc limit 10;
+
+
+select * from film where length=(select max(length) from film);
+
+
+
+select title, special_features from film 
+	where special_features like '%deleted scenes%';
+
+
+select last_name from actor group by last_name desc having count(last_name)=1;
+
+select last_name, count(*)
+from actor
+group by last_name
+having count(last_name)>0
+order by count(*) desc;
+
+
+
+15. select AVG(length) from film;
+
+
+16. select avg(length), category_id from film f
+join film_category fc on f.film_id=fc.film_id
+group by fc.category_id;
+
+
+
+select title, special_features from film where description like '%robot%';
+
+
+
+
+select title from film where film_id in(
+select film_id from film_Actor where actor_id=(
+select actor_id from actor where last_name='Costner'
+)
+);
+
+
+
+
+select title from film where film_id in(
+	select film_id from film_category
+    where category_id=(
+		select category_id from category
+        where `name` ='horror'
+        )
+        );
+
+
+select first_name, last_name from staff where staff_id=2;
+
+
+
+
+select count(distinct country) from country;
+
+
+
+
+select `name` from language order by `name` desc;
+
+
+
+
+
+
+select first_name, last_name from actor where last_name like '%son%' order by first_name asc;
